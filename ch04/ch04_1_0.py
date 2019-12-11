@@ -7,7 +7,6 @@ author: zqp111
 def GetMaxArray(inputArray, start=0, end=0, First=False):
     if First:
         end = len(inputArray)
-    print(start,end)
 
     if end - start <= 1:
         return start, end, inputArray[start]
@@ -15,6 +14,12 @@ def GetMaxArray(inputArray, start=0, end=0, First=False):
     Lstart, Lend, Lmax = GetMaxArray(inputArray, start, mid)
     Mstart, Mend, Mmax = GetMaxArray(inputArray, mid, end)
     Rstart, Rend, Rmax = GetMaxCross(inputArray, start, end)
+    if Lmax > Mmax and Lmax > Rmax:
+        return Lstart, Lend, Lmax
+    elif Mmax > Lmax and Mmax > Rmax:
+        return Mstart, Mend, Mmax
+    else:
+        return Rstart, Rend, Rmax
 
 
 def GetMaxCross(inputArray, start, end):
@@ -47,7 +52,7 @@ def GetMaxCross(inputArray, start, end):
 
 
 if __name__ == '__main__':
-    a = [1,2,3,4,5,6,7]
-    # b = GetMaxArray(a,First=True)
-    b = GetMaxCross(a,1,3)
+    a = [-1,2,3,4,-5,-6,7]
+    b = GetMaxArray(a,First=True)
+    # b = GetMaxCross(a,1,3)
     print(b)
