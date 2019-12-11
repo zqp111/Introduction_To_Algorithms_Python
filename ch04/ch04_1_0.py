@@ -1,7 +1,7 @@
 '''
-date: 2019/12/10
+date: 2019/12/11
 author: zqp111
-思考题 2-4 逆序对
+正文4.1 最大子数组问题 递归算法
 '''
 
 def GetMaxArray(inputArray, start=0, end=0, First=False):
