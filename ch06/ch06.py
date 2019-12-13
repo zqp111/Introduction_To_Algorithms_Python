@@ -45,14 +45,14 @@ def maxHeapify2(inputArray, i):     # 非递归算法
 
 
 def buildMaxHeap(inputArray):
-    inputArray.append(len(inputArray))      # 以最后一位表示堆元素个数
-    for i in range(inputArray[-1]>> 1, -1, -1):   # 自下向上维护整个最大堆, 从而生成一个最大堆
+    for i in range(inputArray[-1]>> 1, -1, -1):   # 自下向上维护各個子樹, 从而生成一个最大堆
         maxHeapify2(inputArray, i)
 
 
 def heapSort(inputArray):
+    inputArray.append(len(inputArray))      # 以最后一位表示堆元素个数
     buildMaxHeap(inputArray)
-    for i in range(inputArray[-1]-1, -1, -1):
+    for i in range(inputArray[-1]-1, 0, -1):
         inputArray[i], inputArray[0] = inputArray[0], inputArray[i]
         inputArray[-1] -= 1
         maxHeapify2(inputArray, 0)
@@ -64,3 +64,4 @@ if __name__ == "__main__":
         a.append(random.randint(0,99))
     heapSort(a)
     print(a)
+    
