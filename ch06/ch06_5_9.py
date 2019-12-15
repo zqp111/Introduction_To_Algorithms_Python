@@ -1,5 +1,5 @@
 '''
-date: 2019/12/12
+date: 2019/12/14
 author: zqp111
 习题6.5-9 合并k个有序链表(升序链表)
 '''
@@ -12,7 +12,7 @@ from ch06_5_3 import buildMinHeap
 
 
 def mergeArray(arrayList):
-    k = len(arrayList)
+    #k = len(arrayList)
     pass
 
 
