@@ -61,9 +61,6 @@ class linkedList(object):
             x.next.prov = x.prov
 
     
-
-
-
 if __name__ == "__main__":
     l = linkedList()
     a1 = Node(1)
