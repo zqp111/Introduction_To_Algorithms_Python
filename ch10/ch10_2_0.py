@@ -1,7 +1,7 @@
 '''
-date: 2019/12/16
+date: 2019/12/18
 author: zqp111
-正文10.1 链表
+正文10.2 链表
 '''
 
 class Node():
@@ -19,7 +19,7 @@ class linkedList(object):
     def  __init__(self, head = None):
         self.head = head
     
-    def __len__(self):
+    def __len__(self):  # 可以直接调用len(linkedList)
         x = self.head
         length = 0
         while x != None:
@@ -70,5 +70,6 @@ if __name__ == "__main__":
     l.insert(a2)
     print(l.head)
     print(l.search(1))
+    print(len(l))
     l.delete(l.search(1))
     print(l.head)
