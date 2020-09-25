@@ -8,6 +8,7 @@
 @fuction :   正文12搜索树
 '''
 
+
 import numpy as np
 
 
@@ -99,26 +100,58 @@ class SearchTree():
         
         return max_(self.root)
 
-
+    def transplant(self,u,v):
+        '''
+        parameter: 
+            u: 待替代树结点
+            v: 要替代树结点
+        '''
+        if u == self.root:
+            self.root = v
+        if u == u.parent.left:
+            u.parent.left = v
+        else:
+            u.parent.right = v
+        if v != None:
+            v.parent = u.parent
+    
+    def delete(self,z):
+        '''Delete
+        parameter: 
+            z: 待删除结点
+        '''
+        if z.left == None:
+            self.transplant(z, z.right)
+        elif z.right == None:
+            self.transplant(z, z.left)
+        else:
+            y = z.right
+            while y.left != None:
+                y = y.left
+            if y.parent != z:
+                self.transplant(y, y.right)
+                y.right = z.right
+                y.right.parent = y
+            self.transplant(z, y)
+            y.left = z.left
+            y.left.parent = y
 
 
 if __name__ == "__main__":
-    root = Node(9)
-    node1 = Node(8)
-    node2 = Node(10)
-    node3 = Node(1)
-    node4 = Node(4)
+    root = Node(11)
+    key_list = [4, 7, 1, 9, 20, 2, 5, 10, 3, 0, -12, 30, 8]
+    node_list = list()
     tree = SearchTree(root)
-
-    tree.insert(node1)
-    tree.insert(node2)
-    tree.insert(node3)
-    tree.insert(node4)
-
+    for i in key_list:
+        node_list.append(Node(i))
+        tree.insert(node_list[-1])
+    
     m = tree.search(8)
     min_ = tree.minimize_re()
     max_ = tree.maximize()
     # print(min_, max_)
+
+    tree.delete(node_list[2])
 
     tree.tree_walk()
     print(tree.tree_key, len(tree))
